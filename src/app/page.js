@@ -59,7 +59,7 @@ export default async function Home() {
       }
       </div>
           <p class="porfolio_readmore">
-                <a href="" class="primary-btn">See my full portfolio</a>        
+                <a href="" className="primary-btn">See my full portfolio</a>        
           </p>
         
       </div>
