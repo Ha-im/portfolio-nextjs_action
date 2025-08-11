@@ -54,13 +54,13 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <p class="porfolio_readmore">
-                <a href="" class="primary-btn">See my full portfolio</a>        
-            </p>
         </div>
       )
       }
       </div>
+          <p class="porfolio_readmore">
+                <a href="" class="primary-btn">See my full portfolio</a>        
+          </p>
         
       </div>
     </>
