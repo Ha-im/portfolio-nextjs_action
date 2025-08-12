@@ -1,22 +1,33 @@
+"use client";
 import Image from "next/image";
 import { createClient } from '@/utils/supabase/client';
+import { useEffect, useState } from "react";
+import Link from 'next/link';
+export default function Home() {
+  const [projects,setProjects] = useState([]);
+  const [error,setError] = useState(null);
+  useEffect(()=>{
+    const supabase = createClient();
+    (async ()=>{
+      const {data , error} = await supabase
+      .from("portfolio")
+      .select()
+      .order('id', { ascending: false })
+      .limit(3) 
+      setProjects(data);
+      if(error) setError(error.message);
+      })();
+  },[])//최초 한번만 실행되면 되니까 의존성 배열을 아무것도 넣지않음 
 
-export default async function Home() {
-  const supabase = await createClient();
-  const {data : projects, error} = await supabase
-  .from("portfolio")
-  .select()
-  .order('id', { ascending: false })
-  .limit(3)
-  ;
   const  getPublicURL = (path)=>{
+    const supabase = createClient();
     const { data } = supabase
     .storage
     .from('portfolio')
     .getPublicUrl(path)
     return data.publicUrl;
   }
-  console.log(projects);
+
   if(error){
     console.log('데이터 조회 실패',error)
     return <div>데이터 조회 실패</div>
@@ -49,8 +60,12 @@ export default async function Home() {
           <Image src={getPublicURL(i.thumbnail)} width={364} height={209} alt={i.title}/>
           <div className="hover_contents">
               <div className="list_info">
-                  <h3><a href={`/project/${i.id}`}>{i.title}</a> <Image src="/images/portfolio_list_arrow.png" width={6} height={8} alt="list arrow"/></h3>
-                  <p><a href={`/project/${i.id}`}>Click to see project</a></p>
+                  <h3>
+                    <Link href={{ pathname: "/project", query: { id: i.id } }}>{i.title}</Link>{i.title}<Image src="/images/portfolio_list_arrow.png" width={6} height={8} alt="list arrow"/>
+                  </h3>
+                  <p>
+                    <Link href={{ pathname: "/project", query: { id: i.id } }}>Click to see project</Link>
+                  </p>
               </div>
             </div>
           </div>
