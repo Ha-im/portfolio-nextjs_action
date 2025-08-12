@@ -32,7 +32,7 @@ export default function InsertPage() {
       setUser(user)
     }
     checkUser();
-  },[])
+  },[supabase.auth])
     // Upload file using standard upload
   async function uploadFile(file,path) {
     const uniqueFileName = `${Date.now()}-${file.name}`
