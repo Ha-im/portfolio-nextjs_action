@@ -5,6 +5,7 @@ import './common.css';
 import './bootstrap.min.css';
 import './default.css';
 import './responsive.css';
+import LoginStatus from "@/component/LoginStatus";
 export const metadata = {
   title: "Minimal Next App",
   description: "welcome to my protfolio",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
                     <li><Link href="/projects">Portfolio</Link></li>
                     <li><Link href="/about">About</Link></li>
                     <li><Link href="/contact">Contact</Link></li>
+                    <LoginStatus/>
                 </ul>
             </nav>              
         </header>

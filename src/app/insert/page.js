@@ -68,8 +68,8 @@ export default function InsertPage() {
       console.log(error)
     }else{
       alert('로그인 성공');
-      //setUser(data.user); // 로그인한 유저의 유저 정보 업데이트
-      router.refresh(); // 로그인 후 새로고침
+      setUser(data.user); // 로그인한 유저의 유저 정보 업데이트
+      // router.refresh(); // 로그인 후 새로고침
     }
   }
   //텍스트 넣는법
