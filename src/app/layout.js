@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from 'next/link'
+import {widthBase} from '@/lib/path'
+import LoginStatus from "@/component/LoginStatus";
 //css 로드
 import './common.css';
 import './bootstrap.min.css';
 import './default.css';
 import './responsive.css';
-import LoginStatus from "@/component/LoginStatus";
+
 export const metadata = {
   title: "Minimal Next App",
   description: "welcome to my protfolio",
