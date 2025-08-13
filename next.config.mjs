@@ -6,4 +6,5 @@ const nextConfig = {
   images: { unoptimized: true },   // Pages에서 권장
 };
 
+
 export default nextConfig;
